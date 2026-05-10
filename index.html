@@ -638,6 +638,103 @@ textarea.form-control{resize:vertical;min-height:100px}
   .table-wrap{font-size:.73rem}
   .comp-table th,.comp-table td{padding:8px 9px}
 }
+
+/* ═══════════════════════════════════════════════════
+   MOBILE-FRIENDLY: 4 KEY SECTIONS @ 900px
+   Target pages: market, demo, team, risk
+═══════════════════════════════════════════════════ */
+@media(max-width:900px){
+
+  /* ── MARKET RESEARCH PAGE ── */
+  #page-market .metrics-bar{
+    grid-template-columns:1fr 1fr;
+    padding:22px 16px;
+    gap:16px;
+  }
+  #page-market .metric{
+    border-right:none;
+    border-bottom:1px solid rgba(255,255,255,.1);
+    padding-bottom:14px;
+    padding-right:0;
+  }
+  #page-market .metric:nth-child(odd){
+    border-right:1px solid rgba(255,255,255,.1);
+    padding-right:14px;
+  }
+  #page-market .metric:nth-last-child(-n+2){border-bottom:none}
+  #page-market .cards-grid.cards-2{grid-template-columns:1fr}
+  #page-market .chart-canvas-wrap{height:180px}
+  #page-market .section-header p{font-size:.92rem}
+
+  /* ── DEMO PAGE ── */
+  #page-demo .demo-tab{
+    padding:8px 14px;
+    font-size:.78rem;
+  }
+  #page-demo [style*="grid-template-columns:1fr 1fr"]{
+    grid-template-columns:1fr !important;
+  }
+  /* advisor chat height adjustment */
+  #advisorMsgs{min-height:240px !important}
+  #page-demo [style*="max-height:600px"]{max-height:none !important}
+  /* advisor chip row wrap nicely */
+  #page-demo [style*="flex-wrap:wrap"]{gap:6px}
+  .advisor-chip{font-size:.72rem;padding:5px 10px}
+  /* demo tab panels stacked inputs */
+  #demotab-analyser [style*="grid-template-columns:1fr 1fr"],
+  #demotab-fingerprint [style*="grid-template-columns:1fr 1fr"],
+  #demotab-forensics [style*="grid-template-columns:1fr 1fr"]{
+    grid-template-columns:1fr !important;
+  }
+  /* tab row scroll on very small */
+  #page-demo [style*="display:flex;gap:8px;margin-bottom:28px"]{
+    overflow-x:auto;
+    padding-bottom:4px;
+    flex-wrap:nowrap;
+  }
+  .demo-tab{white-space:nowrap;flex-shrink:0}
+
+  /* ── FOUNDER / TEAM PAGE ── */
+  #page-team .cards-grid.cards-2{grid-template-columns:1fr}
+  #page-team .team-card{padding:22px}
+  #page-team .team-bio{font-size:.82rem}
+  /* highlight-box inner 3-col grid → 1-col */
+  #page-team .highlight-box [style*="grid-template-columns:repeat(3,1fr)"]{
+    grid-template-columns:1fr 1fr !important;
+    gap:12px;
+  }
+  #page-team .highlight-box [style*="font-size:1.8rem"]{font-size:1.5rem}
+
+  /* ── RISK PAGE ── */
+  #page-risk [style*="grid-template-columns:1.2fr .7fr .7fr 1.5fr"]{
+    grid-template-columns:1fr !important;
+    gap:4px;
+  }
+  /* risk framework table header labels → hidden on mobile, data carries meaning */
+  #page-risk [style*="grid-template-columns:1.2fr .7fr .7fr 1.5fr"] > div{
+    font-size:.75rem;
+  }
+  /* risk rows → stack vertically */
+  .risk-row{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    padding:14px 0;
+  }
+  .risk-cat{font-size:.86rem}
+  #page-risk .cards-grid.cards-3{grid-template-columns:1fr}
+  #page-risk .highlight-box p{font-size:.88rem}
+  /* risk mitigation box inner padding */
+  #page-risk [style*="padding:28px 32px"]{padding:18px 16px !important}
+  /* risk framework column header row */
+  #page-risk [style*="grid-template-columns:1.2fr .7fr .7fr 1.5fr"][style*="margin-bottom:10px"]{
+    display:none;
+  }
+
+  /* ── SHARED SECTION TWEAKS @ 900px ── */
+  .section-header h2{font-size:1.35rem}
+  .section-header p{font-size:.9rem}
+}
 </style>
 </head>
 <body>
@@ -717,16 +814,9 @@ textarea.form-control{resize:vertical;min-height:100px}
 <!-- SIDEBAR -->
 <nav class="sidebar">
   <div class="sidebar-brand">
-    <div class="brand-logo">
-      <div class="brand-icon-wrap">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M12 2L2 7l10 5 10-5-10-5z" fill="white" opacity=".9"/>
-          <path d="M2 17l10 5 10-5" stroke="#A78BFA" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M2 12l10 5 10-5" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
-        </svg>
-      </div>
-      <div class="brand-name">Prompt<span>Ops</span> AI</div>
-    </div>
+    <div class="footer-brand-logo">
+  <div class="footer-brand-title">Prompt<span>Ops</span> AI</div>
+</div>
     <div class="brand-tagline">Capture · Clone · Scale · Evolve</div>
   </div>
   <div class="sidebar-badge">
@@ -2174,15 +2264,8 @@ textarea.form-control{resize:vertical;min-height:100px}
       <div class="footer-top">
         <div class="footer-col footer-col-brand">
           <div class="footer-brand-logo">
-            <div class="footer-brand-icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M12 2L2 7l10 5 10-5-10-5z" fill="white" opacity=".9"/>
-                <path d="M2 17l10 5 10-5" stroke="#A78BFA" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M2 12l10 5 10-5" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
-              </svg>
-            </div>
-            <div class="footer-brand-title">Prompt<span>Ops</span> AI</div>
-          </div>
+  <div class="footer-brand-title">Prompt<span>Ops</span> AI</div>
+</div>
           <p>Transforming fragmented AI interactions into proprietary Workflow DNA. Built for UK professional SMEs who are ready to capture, clone, and scale their AI intelligence  sustainably and compliantly.</p>
           <div class="footer-badges">
             <span class="footer-badge">UK SME Focused</span>
@@ -2546,8 +2629,8 @@ async function callClaude(systemPrompt, userMessage, history) {
       'anthropic-dangerous-direct-browser-access': 'true'
     },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 1000,
+      model: 'claude-opus-4-20250514',
+      max_tokens: 2000,
       system: systemPrompt,
       messages
     })
@@ -2597,7 +2680,7 @@ async function runAIDemo() {
   }
 
   setLoading('analyserBtn','analyserBtnText',true,'🧬 Run PromptOps AI Analysis');
-  content.innerHTML = `<div style="padding:24px;text-align:center;color:var(--txt-dim);font-size:.88rem;display:flex;flex-direction:column;align-items:center;gap:12px;flex:1"><div style="width:40px;height:40px;border:3px solid var(--gray-200);border-top-color:var(--purple);border-radius:50%;animation:spin .7s linear infinite"></div><div style="font-weight:600;color:var(--navy)">PromptOps AI intelligence engine running…</div><div style="font-size:.78rem">Claude Sonnet is analysing your workflow challenge</div></div>`;
+  content.innerHTML = `<div style="padding:24px;text-align:center;color:var(--txt-dim);font-size:.88rem;display:flex;flex-direction:column;align-items:center;gap:12px;flex:1"><div style="width:40px;height:40px;border:3px solid var(--gray-200);border-top-color:var(--purple);border-radius:50%;animation:spin .7s linear infinite"></div><div style="font-weight:600;color:var(--navy)">PromptOps AI intelligence engine running…</div><div style="font-size:.78rem">Claude Opus 4 is analysing your workflow challenge</div></div>`;
 
   try {
     const system = `You are the PromptOps AI intelligence engine  an expert system for diagnosing and optimising AI workflows in UK professional service SMEs (recruitment, consulting, legal, operations). 
@@ -2642,7 +2725,7 @@ Generate a comprehensive PromptOps AI Workflow Intelligence Report.`;
         </div>
         <div style="text-align:right">
           <div style="font-size:.65rem;color:var(--txt-dim);font-family:var(--font-mono);margin-bottom:4px;letter-spacing:.08em">POWERED BY</div>
-          <div style="font-size:.75rem;font-weight:600;color:var(--purple);font-family:var(--font-mono)">Claude Sonnet 4</div>
+          <div style="font-size:.75rem;font-weight:600;color:var(--purple);font-family:var(--font-mono)">Claude Opus 4</div>
         </div>
       </div>
       <div style="background:var(--white);border:1px solid var(--gray-200);border-radius:10px;padding:16px;font-size:.85rem;line-height:1.7;flex:1;overflow-y:auto">
